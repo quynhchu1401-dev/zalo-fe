@@ -18,7 +18,7 @@
 // vue.config.js
 // vue.config.js
 module.exports = {
-  publicPath: '/ZaloOA/',
+  publicPath: '/zalo-fe/',
   devServer: {
     proxy: {
       "/api": {

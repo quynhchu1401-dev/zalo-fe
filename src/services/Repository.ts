@@ -3,9 +3,8 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import store from "../store";
 import router from "../router";
 
-// Base API: can be configured via VUE_APP_API_BASE_URL env var (e.g. https://api.example.com)
-const baseDomain = process.env.VUE_APP_API_BASE_URL || "";
-const baseAPI = baseDomain ? `${baseDomain.replace(/\/$/, '')}/api` : "/api";
+const baseDomain = "";
+const baseAPI = `${baseDomain}/api`;
 
 const instance = axios.create({
   baseURL: baseAPI,
