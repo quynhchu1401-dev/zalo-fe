@@ -81,7 +81,7 @@
                 </div>
 
                 <div>
-                    <h4>Discussion</h4>
+                    <h4>Discussion s</h4>
                     <div>
                         <Textarea v-model="comment" rows="3" placeholder="Add a comment" />
                         <Button label="Send" @click="sendComment" />
