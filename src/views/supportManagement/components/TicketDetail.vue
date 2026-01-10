@@ -75,6 +75,7 @@
                         <ul>
                             <li v-for="h in ticket?.history" :key="h.id">{{ h.at }} - {{ h.actor }} - {{ h.action }} {{
                                 h.message ? ("(" + h.message + ")") : '' }}</li>
+
                         </ul>
                     </div>
                 </div>
