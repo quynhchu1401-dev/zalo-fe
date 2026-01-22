@@ -19,7 +19,10 @@ import ManagerGroupPage from "@/pages/ManagerGroupPage.vue";
 import showListStatistical from "@/pages/ShowListStatistical.vue";
 
 const routes: Array<RouteRecordRaw> = [
-  { path: "/", name: "root", component: Home, props: true },
+  {
+    path: "/",
+    redirect: { name: "login" }
+  },
   { path: "/login", name: "login", component: LoginPage, props: true },
   { path: "/relogin", name: "relogin", component: reLoginPage, props: true },
   { path: "/home", name: "home", component: Home, props: true },

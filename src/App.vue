@@ -1,8 +1,8 @@
 <template>
-  <div class="on_page">
+  <div class="on_page" :class="{ 'no-chrome': isLoginRoute }">
     <Toast />
 
-    <TopNavBar :isLoggedIn="isLoggedIn" />
+    <TopNavBar v-if="showTopNav" :isLoggedIn="isLoggedIn" />
 
     <div class="layout-main">
       <div class="main-content">
@@ -82,20 +82,43 @@
     margin: 8px;
   }
 }
-</style>
+/* When the page should not show topbar/sidebar (e.g., login page) */
+.on_page.no-chrome {
+  --current-sidebar-left: 0;
+}
+.on_page.no-chrome .layout-main {
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: transparent;
+}
+.on_page.no-chrome .main-content {
+  width: 100%;
+  border-radius: 0;
+  padding: 0;
+  max-width: 100%;
+}</style>
 <script>
 import TopNavBar from "@/components/TopNavBar";
 import { useStore } from "vuex";
 import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
   components: { TopNavBar },
   setup() {
     const store = useStore();
+    const route = useRoute();
     const isLoggedIn = computed(() => !!store.state.token);
+    const isLoginRoute = computed(() => route.name === 'login' || route.path === '/login');
+    const showTopNav = computed(() => isLoggedIn.value && !isLoginRoute.value);
 
     return {
-      isLoggedIn
+      isLoggedIn,
+      isLoginRoute,
+      showTopNav
     }
   }
 }
